@@ -1,14 +1,14 @@
 function cost (costing){
     const CostingMoney = document.getElementById(costing+'-cost');
     const PriceText = CostingMoney.value;
-    if(isNaN(PriceText)){
-        
+    const Price = parseFloat(PriceText); 
+    if (Price < 0 ) {
+        alert('something is wrong.you enter negative value.please check again')
     }
-    else{
-        const Price = parseFloat(PriceText); 
+    else if(isNaN(Price)){
+        alert('something is wrong.you enter string.please inter positive value')
+    }
     return Price;
-    }
-    
 }
 
 
@@ -65,7 +65,9 @@ document.getElementById('save-money').addEventListener('click',function(){
    const saveMoneyText=saveMoney.value;
    const saveMoneyValue=parseFloat(saveMoneyText);
 
-   
+   if(saveMoneyValue<0 || isNaN(saveMoneyValue)){
+       alert('please check your parcentege and try again')
+   }
 
    const saveMoneyTotal = totalIncomeValue * (saveMoneyValue/100) ;
   
@@ -75,6 +77,7 @@ document.getElementById('save-money').addEventListener('click',function(){
    savingAmountValue=parseFloat(savingAmountText);
 
     // saving amount
+   
    savingAmount.innerText=saveMoneyTotal;
 
 //remaining balance
@@ -88,6 +91,11 @@ document.getElementById('save-money').addEventListener('click',function(){
    const remainingBalanceValue=parseFloat(remainingBalanceText);
 
    remainingBalance.innerText=balanceMoneyTotal-saveMoneyTotal;
+
+
+   if (balanceMoneyTotal < saveMoneyTotal ) {
+    alert('you have low money to save...so try to expenses less next time')
+}
 
 })
 
