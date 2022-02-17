@@ -1,4 +1,15 @@
-
+function cost (costing){
+    const CostingMoney = document.getElementById(costing+'-cost');
+    const PriceText = CostingMoney.value;
+    if(isNaN(PriceText)){
+        
+    }
+    else{
+        const Price = parseFloat(PriceText); 
+    return Price;
+    }
+    
+}
 
 
 document.getElementById('calculate-total-expenses').addEventListener('click', function () {
@@ -9,17 +20,13 @@ document.getElementById('calculate-total-expenses').addEventListener('click', fu
     const totalIncomeValue = parseFloat(totalIncomeText);
     // my total cost
 
-    const foodCost = document.getElementById('food-cost');
-    const foodPriceText = foodCost.value;
-    const foodsPrice = parseFloat(foodPriceText);
+    
+    const foodsPrice = cost("food");
+ 
+    const rentPrice = cost("rent");
+   
+    const clothesPrice = cost("clothes");
 
-    const rentCost = document.getElementById('rent-cost');
-    const rentPriceText = rentCost.value;
-    const rentPrice = parseFloat(rentPriceText);
-
-    const clothesCost = document.getElementById('clothes-cost');
-    const clothesPriceText = clothesCost.value;
-    const clothesPrice = parseFloat(clothesPriceText);
     // my new balance
     const totalCost = foodsPrice + rentPrice + clothesPrice;
     const balance = totalIncomeValue - totalCost
@@ -47,7 +54,7 @@ document.getElementById('calculate-total-expenses').addEventListener('click', fu
 
 })
 
-//
+
 
 document.getElementById('save-money').addEventListener('click',function(){
     const totalIncome = document.getElementById('total-income');
@@ -69,7 +76,18 @@ document.getElementById('save-money').addEventListener('click',function(){
 
     // saving amount
    savingAmount.innerText=saveMoneyTotal;
-   
+
+//remaining balance
+   const balanceMoney=document.getElementById('balance-money');
+   const balanceMoneyText=balanceMoney.innerText;
+   const balanceMoneyTotal=parseFloat(balanceMoneyText);
+
+
+   const remainingBalance = document.getElementById('remaining-balance');
+   const remainingBalanceText = remainingBalance.innerText;
+   const remainingBalanceValue=parseFloat(remainingBalanceText);
+
+   remainingBalance.innerText=balanceMoneyTotal-saveMoneyTotal;
 
 })
 
